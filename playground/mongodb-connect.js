@@ -1,11 +1,11 @@
 const {MongoClient, ObjectId} = require('mongodb');
 
-let user = {name: 'BellaBe', age: 38};
-let {name} = user;
-console.log(name);
+// let user = {name: 'BellaBe', age: 38};
+// let {name} = user;
+// console.log(name);
 
-let obj = new ObjectId();
-console.log(obj)
+// let obj = new ObjectId();
+// console.log(obj)
 
 MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client)=>{
     if(err){
@@ -14,15 +14,15 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client)=>{
     console.log(('Connected to MongoDB server'));
 
     const db = client.db('TodoApp');
-    // db.collection('Todos').insertOne({
-    //     text: 'Something to do',
-    //     completed: false
-    // }, (err, result)=>{
-    //     if(err){
-    //         return console.log('Unable to insert todo', err)
-    //     }
-    //     console.log(JSON.stringify([result.ops, undefined, 2]))
-    // })
+    db.collection('Todos').insertOne({
+        text: 'Eat lunch',
+        completed: false
+    }, (err, result)=>{
+        if(err){
+            return console.log('Unable to insert todo', err)
+        }
+        console.log(JSON.stringify([result.ops, undefined, 2]))
+    })
     // db.collection('Users').insertOne({
     //     name: 'BellaBe',
     //     age: 38,
